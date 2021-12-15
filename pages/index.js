@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../context";
 
 export default function Auth() {
+  const { setUsername, setSecret } = useContext(Context);
+
   return (
     <div className="background">
       <div className="auth-container">
@@ -8,7 +11,11 @@ export default function Auth() {
           <div className="auth-title">NextJS Chat</div>
 
           <div className="input-container">
-            <input placeholder="Email" className="text-input" />
+            <input
+              placeholder="Email"
+              className="text-input"
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
 
           <div className="input-container">
@@ -16,6 +23,7 @@ export default function Auth() {
               type="password"
               placeholder="Password"
               className="text-input"
+              onChange={(e) => setSecret(e.target.value)}
             />
           </div>
 
